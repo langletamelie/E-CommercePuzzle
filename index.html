@@ -19,22 +19,35 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
   <script src="assets/js/script.js"></script>
 </head>
-<body>
-  <div ng-app="appPuzzle" ng-controller="displayContent" class="row">
-    <div ng-repeat="puzzle in puzzles" class="card-group col-4">
+<body ng-app="appPuzzle" ng-controller="displayContent">
+<div>
+  <input type="text" ng-model="filterChange" placeholder="Recherche" />
+  <ul>
+    <li ng-click="changeCategory('')">All</li>
+    <li ng-click="changeCategory({category : 'enfant'})">Enfant</li>
+    <li ng-click="changeCategory({catgory : 'adulte'})">Adulte</li>
+    <li ng-click="changeCategory({category : '3D'})">3D</li>
+  </ul>
+  <ul>
+    <li ng-click="changeOrder('name')">nom ASC</li>
+    <li ng-click="changeOrder('-name')">nom DESC</li>
+  </ul>
+</div>
+<div class="row">
+    <div class="card-group col-4" ng-repeat="puzzle in puzzles | orderBy : orderby | filter : filterChange  track by $index">
       <div class="card">
-        <img class="card-img-top" src="{{puzzle.image}}" alt="{{puzzle.name}}"/>
-        <div class="card-body">
-          <h3>{{puzzle.name}}</h3>
-          <p>{{puzzle.desc}}</p>
-          <p>{{puzzle.price}}</p>
-        </div>
+      <img class="card-img-top" src="{{puzzle.image}}" alt="{{puzzle.name}}" />
+      <div class="card-body">
+        <h3>{{puzzle.name}}</h3>
+        <p>{{puzzle.desc}}</p>
+        <p>{{puzzle.price}}€</p>
+      </div>
         <div class="card-footer">
-          <a href="#" class="btn btn-primary center">Ajouter au panier</a>
-        </div>
+        <input type="button" name="addBasket" value="Ajouter au panier" class="btn btn-primary center" ng-click="addBasket($index)" />
       </div>
     </div>
   </div>
+</div>
   <!-- Footer Fred-->
   <footer class="page-footer">
     <div style="background-image:url(assets/img/739916-awesome-background-images.jpg);">
