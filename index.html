@@ -16,9 +16,21 @@
       <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
       integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+      <script src="assets/js/script.js"></script>
   </head>
   <body>
-
+    <div ng-app="appPuzzle" ng-controller="displayContent">
+        <div ng-repeat="puzzle in puzzles">
+          <img src="{{puzzle.image}}" alt="{{puzzle.name}}"/>
+          <div>
+            <h3>{{puzzle.name}}</h3>
+            <p>{{puzzle.desc}}</p>
+            <p>{{puzzle.price}}</p>
+            <!-- boutton ajout panier + qtt -->
+          </div>
+        </div>
+    </div>
     <!-- Footer Fred-->
     <footer class="page-footer">
         <div style="background-image:url(assets/img/739916-awesome-background-images.jpg);">
