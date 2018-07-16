@@ -1,17 +1,37 @@
-/*css footer*/
+/*css Fred*/
+body {
+  padding-top: 150px;
+}
+.navbar {
+  background-image: url(../img/puzzle-y.jpg);
+  font-size: x-large;
+}
+.nav-link {
+  color: black;
+}
+#footerStyle {
+  padding-right: auto;
+  margin-right: auto;
+  padding-left: auto;
+  margin-left: auto;
+}
+#socialLink {
+  background-image: url(../img/puzzle-y.jpg);
+}
 h6 {
   font-size: x-large;
 }
+i {
+  color: #4c4523;
+}
 a {
-  color : #ef9d17;
+  color : #4c4523;
 }
 a:hover {
-color: #b57f24;
+color: #black;
 }
-i {
-  color: #F0C217;
-}
-/*fin css footer*/
+/*fin css Fred*/
+
 .card-img-top{
   width: 450px;
   height: auto;
