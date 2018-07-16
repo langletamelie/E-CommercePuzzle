@@ -12,3 +12,10 @@ i {
   color: #F0C217;
 }
 /*fin css footer*/
+.card-img-top{
+  width: 450px;
+  height: auto;
+}
+.card-footer{
+  text-align: center;
+}
