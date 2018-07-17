@@ -60,30 +60,27 @@
       <div class="modal-header">
         <h3 class="modal-title m-auto">Votre panier</h3>
       </div>
-      <div class="modal-body p-4" id="result">
+      <div class="modal-body p-4" id="result" ng-repeat="(key, value) in quantityBasket">
         <div class="imageArticleContanier">
-          <img src="assets/img/maya.jpg" alt="image de l'article" class="imageArticle">
-          <p class="text-center mt-1">ref : 2511</p>
+          <img src={{puzzles[key].image}} alt="image de l'article" class="imageArticle">
+          <p class="text-center mt-1">ref : {{puzzles[key].ref}}</p>
         </div>
         <div class="infoArticleContainer">
-          <h4 class="text-center">Titre Article</h4>
-          <p class="text-center">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitatio
-          </p>
+          <h4 class="text-center">{{puzzles[key].name}}</h4>
+          <p class="text-center">{{puzzles[key].desc}}</p>
         </div>
         <div class="priceArticleContainer ml-4">
-          <h5>12.50 €</h5>
-          <h6 class="quantity">Qté : 25</h6>
+          <h5>{{puzzles[key].price * value | number : 2}} €</h5>
+          <h6 class="quantity">Qté : {{value}}</h6>
           <div>
             <button type="button" name="decrease" class="btn">-</button>
             <button type="button" name="increase" class="btn">+</button>
           </div>
         </div>
-        <button type="button" name="remove" class="btn btn-primary" id="remove">Supprimer</button>
+        <button type="button" name="remove" class="btn btn-primary" id="remove" ng-click="removeItem(index)">Supprimer</button>
       </div>
       <div class="modal-footer">
-        <h5 id="total">Total : 250 €</h5>
+        <h5 id="total">Total : {{totalPriceItems() | number : 2}} €</h5>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Continuer vos achats</button>
       </div>
     </div>

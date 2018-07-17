@@ -18,7 +18,6 @@ app.controller('displayContent', function($scope, $http) {
       $scope.quantityBasket[id]++;
     }
   }
-
   $scope.totalPriceItems = function() {
   var totalPriceItems = 0;
   angular.forEach($scope.quantityBasket, function(value, key) {
@@ -26,6 +25,9 @@ app.controller('displayContent', function($scope, $http) {
   })
   return totalPriceItems;
   }
+  $scope.removeItem = function(index) {
+          delete $scope.quantityBasket;
+      }
 });
 $(document).ready(function () {
     $('#changeCategoryList li').click(function() {
