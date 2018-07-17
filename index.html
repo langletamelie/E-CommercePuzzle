@@ -28,8 +28,8 @@
   <span class="navbar-toggler-icon"></span>
 </button>
 <div class="collapse navbar-collapse" id="navbarNavDropdown">
-  <ul class="navbar-nav">
-    <li class="nav-item active">
+  <ul class="navbar-nav" id="changeCategoryList">
+    <li class="nav-item activeCategory">
       <a class="nav-link" href="#" ng-click="changeCategory('')">Accueil <span class="sr-only">(current)</span></a>
     </li>
     <li class="nav-item">
@@ -46,7 +46,7 @@
     </li>
       <li class="nav-item">
         <!-- Button modal -->
-      <button href="#myModal" type="button" class="btn grey" id="myBtn" data-toggle="modal"><span class="fas fa-shopping-cart fa-2x"></span></button>
+      <button href="#myModal" type="button" class="btn grey" id="myBtn" data-toggle="modal">{{totalPriceItems() | number : 2}} € ({{totalQtyKeyBasket()}})<span class="fas fa-shopping-cart fa-2x"></span></button>
     </li>
   </ul>
 </div>
@@ -61,7 +61,7 @@
         <h3 class="modal-title m-auto">Votre panier</h3>
       </div>
       <div class="modal-body p-4" id="result" ng-repeat="(key, value) in quantityBasket">
-        <div class="imageArticleContanier">
+        <div class="imageArticleContainer">
           <img src={{puzzles[key].image}} alt="image de l'article" class="imageArticle">
           <p class="text-center mt-1">ref : {{puzzles[key].ref}}</p>
         </div>
@@ -73,11 +73,11 @@
           <h5>{{puzzles[key].price * value | number : 2}} €</h5>
           <h6 class="quantity">Qté : {{value}}</h6>
           <div>
-            <button type="button" name="decrease" class="btn">-</button>
-            <button type="button" name="increase" class="btn">+</button>
+            <button type="button" name="decrease" class="btn" ng-click="lessQty(key)">-</button>
+            <button type="button" name="increase" class="btn" ng-click="addQty(key)">+</button>
           </div>
         </div>
-        <button type="button" name="remove" class="btn btn-primary" id="remove" ng-click="removeItem(index)">Supprimer</button>
+        <button type="button" name="remove" class="btn btn-primary" id="remove" ng-click="removeItem(key)">Supprimer</button>
       </div>
       <div class="modal-footer">
         <h5 id="total">Total : {{totalPriceItems() | number : 2}} €</h5>

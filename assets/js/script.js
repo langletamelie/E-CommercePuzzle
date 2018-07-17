@@ -23,10 +23,32 @@ app.controller('displayContent', function($scope, $http) {
   angular.forEach($scope.quantityBasket, function(value, key) {
     totalPriceItems += $scope.puzzles[key].price * value;
   })
-  return totalPriceItems;
+    return totalPriceItems;
   }
+
+  $scope.totalQtyKeyBasket = function() {
+  var totalQtyKeyBasket = 0;
+  angular.forEach($scope.quantityBasket, function(value, key) {
+    totalQtyKeyBasket += $scope.quantityBasket[key];
+  })
+    return totalQtyKeyBasket;
+  }
+
   $scope.removeItem = function(index) {
-          delete $scope.quantityBasket;
+     	delete $scope.quantityBasket[index];
+  }
+  $scope.addQty = function(key) {
+     $scope.quantityBasket[key]++;
+  }
+  $scope.lessQty = function(key) {
+     	$scope.quantityBasket[key]--;
+      if($scope.quantityBasket[key] == 0){
+        delete $scope.quantityBasket[key];
+      }
+  }
+  $scope.delBasket = function() {
+        delete $scope.quantityBasket;
+        $scope.quantityBasket = {};
       }
 });
 $(document).ready(function () {

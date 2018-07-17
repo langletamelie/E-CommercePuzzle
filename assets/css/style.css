@@ -120,3 +120,6 @@ h5, h4, h3 {
   }
 }
 /* Modal fin */
+.activeCategory a{
+  color : blue;
+}
