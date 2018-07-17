@@ -106,7 +106,7 @@
     <div class="card-body">
       <h3>{{puzzle.name}}</h3>
       <p>{{puzzle.desc}}</p>
-      <p>{{puzzle.price}}€</p>
+      <p>{{puzzle.price | number : 2}}€</p>
     </div>
       <div class="card-footer">
       <input type="button" name="addBasket" value="Ajouter au panier" class="btn btn-primary center" ng-click="addBasket($index)" />
