@@ -42,12 +42,52 @@
       <a class="nav-link" href="#">Puzzle 3D <span class="sr-only">(current)</span></a>
     </li>
       <li class="nav-item">
-      <button type="button" class="btn grey" id="myBtn"><span class="fas fa-shopping-cart fa-2x"></span></button>
+        <!-- Button modal -->
+      <button href="#myModal" type="button" class="btn grey" id="myBtn" data-toggle="modal"><span class="fas fa-shopping-cart fa-2x"></span></button>
     </li>
   </ul>
 </div>
 </nav>
 <!-- Navbar Fin -->
+
+<!-- Modal début -->
+<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-full" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title m-auto">Votre panier</h3>
+      </div>
+      <div class="modal-body p-4" id="result">
+        <div class="imageArticleContanier">
+          <img src="assets/img/maya.jpg" alt="image de l'article" class="imageArticle">
+          <p class="text-center mt-1">ref : 2511</p>
+        </div>
+        <div class="infoArticleContainer">
+          <h4 class="text-center">Titre Article</h4>
+          <p class="text-center">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitatio
+          </p>
+        </div>
+        <div class="priceArticleContainer ml-4">
+          <h5>12.50 €</h5>
+          <h6 class="quantity">Qté : 25</h6>
+          <div>
+            <button type="button" name="decrease" class="btn">-</button>
+            <button type="button" name="increase" class="btn">+</button>
+          </div>
+        </div>
+        <button type="button" name="remove" class="btn btn-primary" id="remove">Supprimer</button>
+      </div>
+      <div class="modal-footer">
+        <h5 id="total">Total : 250 €</h5>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Continuer vos achats</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal fin -->
+
 <div>
 <input type="text" ng-model="filterChange" placeholder="Recherche" />
 <ul>
