@@ -30,16 +30,19 @@
 <div class="collapse navbar-collapse" id="navbarNavDropdown">
   <ul class="navbar-nav">
     <li class="nav-item active">
-      <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
+      <a class="nav-link" href="#" ng-click="changeCategory('')">Accueil <span class="sr-only">(current)</span></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Puzzle Enfant <span class="sr-only">(current)</span></a>
+      <a class="nav-link" href="#" ng-click="changeCategory({category : 'enfant'})">Puzzle Enfant <span class="sr-only">(current)</span></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Puzzle Adulte <span class="sr-only">(current)</span></a>
+      <a class="nav-link" href="#" ng-click="changeCategory({category : 'adulte'})">Puzzle Adulte <span class="sr-only">(current)</span></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Puzzle 3D <span class="sr-only">(current)</span></a>
+      <a class="nav-link" href="#" ng-click="changeCategory({category : '3D'})">Puzzle 3D <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <input type="text" ng-model="filterText" placeholder="Recherche" />
     </li>
       <li class="nav-item">
         <!-- Button modal -->
@@ -89,21 +92,18 @@
 <!-- Modal fin -->
 
 <div>
-<input type="text" ng-model="filterChange" placeholder="Recherche" />
-<ul>
-  <li ng-click="changeCategory('')">All</li>
-  <li ng-click="changeCategory({category : 'enfant'})">Enfant</li>
-<li ng-click="changeCategory({category : 'adulte'})">Adulte</li>
-<li ng-click="changeCategory({category : '3D'})">3D</li>
-</ul>
-<ul>
-  <li ng-click="changeOrder('name')">nom ASC</li>
-  <li ng-click="changeOrder('-name')">nom DESC</li>
-</ul>
+  <select>
+    <option ng-click="changeOrder('')">-----</option>
+    <option ng-click="changeOrder('name')">nom ASC</option>
+    <option ng-click="changeOrder('-name')">nom DESC</option>
+    <option ng-click="changeOrder('price')">prix ASC</option>
+    <option ng-click="changeOrder('-price')">prix DESC</option>
+  </select>
 </div>
+<div ng-show="!searchFilter.length">Aucun résultat ne correspond à la recherche : {{filterText}}</div>
 <div class="container-fluid">
 <div class="row">
-  <div class="card-group col-lg-4 col-md-6 col-xs-12" ng-repeat="puzzle in puzzles | orderBy : orderby | filter : filterChange  track by $index">
+  <div class="card-group col-lg-4 col-md-6 col-xs-12" ng-repeat="puzzle in searchFilter = (puzzles | filter : filterText)| filter : filterCategory | orderBy : orderby  track by $index">
     <div class="card">
     <img class="card-img-top" src="{{puzzle.image}}" alt="{{puzzle.name}}" />
     <div class="card-body">
@@ -121,7 +121,6 @@
     <!-- Footer Fred-->
     <footer class="page-footer">
             <div class="container-fluid">
-              <div id="socialLink">
             <!-- Grid row-->
             <div class="row py-4 d-flex align-items-center">
               <!-- Grid column -->
@@ -145,7 +144,6 @@
               <!-- Grid column -->
             </div>
             <!-- Grid row-->
-          </div>
           </div>
         <!-- Footer Links -->
         <div class="container text-center text-md-left mt-5">

@@ -4,18 +4,32 @@ app.controller('displayContent', function($scope, $http) {
     $scope.puzzles = response.data;
   });
   $scope.changeCategory = function(category) {
-    $scope.filterChange = category;
+    $scope.filterCategory = category;
   };
     $scope.changeOrder = function(order) {
       $scope.orderby = order;
   };
-  var quantityBasket = [];
+  $scope.quantityBasket = {};
   $scope.addBasket = function(add) {
     var id = add;
-    if(!(id in quantityBasket)){
-      quantityBasket[id] = 1;
+    if(!(id in $scope.quantityBasket)){
+      $scope.quantityBasket[id] = 1;
     }else{
-      quantityBasket[id]++;
+      $scope.quantityBasket[id]++;
     }
   }
+
+  $scope.totalPriceItems = function() {
+  var totalPriceItems = 0;
+  angular.forEach($scope.quantityBasket, function(value, key) {
+    totalPriceItems += $scope.puzzles[key].price * value;
+  })
+  return totalPriceItems;
+  }
+});
+$(document).ready(function () {
+    $('#changeCategoryList li').click(function() {
+        $('.activeCategory').removeClass('activeCategory');
+         $(this).addClass('activeCategory');
+    });
 });

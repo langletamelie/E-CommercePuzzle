@@ -42,8 +42,10 @@ color: #black;
 
 /*cards Amélie*/
 .card-img-top{
-  width: auto;
-  height: 450px;
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
 }
 .card-footer, .card-body{
   text-align: center;
