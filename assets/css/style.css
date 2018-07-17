@@ -22,6 +22,9 @@ body {
 #myBtn:hover {
   color: grey;
 }
+#changeBtn {
+  list-style-type: none;
+}
 #socialLink {
   border-top: 2px solid black;
   border-bottom: 2px solid black;
