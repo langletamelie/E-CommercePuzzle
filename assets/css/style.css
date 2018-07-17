@@ -6,17 +6,25 @@ body {
 .navbar {
   background-image: url(../img/puzzle-y.jpg);
   font-size: x-large;
+  border-bottom: 2px solid black;
 }
 .nav-link {
   color: black;
+}
+.nav-link:hover {
+  color: grey;
 }
 #myBtn{position:absolute;
         right:0;
   color:black;
   background-color: inherit;
 }
+#myBtn:hover {
+  color: grey;
+}
 #socialLink {
-
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
 }
 h6 {
   font-size: x-large;
