@@ -45,10 +45,12 @@ color: #black;
   width: auto;
   height: 450px;
 }
-.card-footer{
+.card-footer, .card-body{
   text-align: center;
 }
-
+.card{
+  margin-top: 40px;
+}
 
 /* Modal début */
 .imageArticleContanier {
