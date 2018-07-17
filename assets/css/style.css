@@ -32,9 +32,10 @@ color: #black;
 }
 /*fin css Fred*/
 
+/*cards Amélie*/
 .card-img-top{
-  width: 450px;
-  height: auto;
+  width: auto;
+  height: 450px;
 }
 .card-footer{
   text-align: center;
