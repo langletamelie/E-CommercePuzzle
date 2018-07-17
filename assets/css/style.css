@@ -1,6 +1,7 @@
 /*css Fred*/
 body {
   padding-top: 150px;
+  background-image: url(../img/puzzle-y.jpg);
 }
 .navbar {
   background-image: url(../img/puzzle-y.jpg);
@@ -9,14 +10,13 @@ body {
 .nav-link {
   color: black;
 }
-#footerStyle {
-  padding-right: auto;
-  margin-right: auto;
-  padding-left: auto;
-  margin-left: auto;
+#myBtn{position:absolute;
+        right:0;
+  color:black;
+  background-color: inherit;
 }
 #socialLink {
-  background-image: url(../img/puzzle-y.jpg);
+
 }
 h6 {
   font-size: x-large;
