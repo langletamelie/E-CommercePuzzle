@@ -19,7 +19,7 @@
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
       <script src="assets/js/script.js"></script>
   </head>
-  <body>
+  <body ng-app="appPuzzle" ng-controller="displayContent">
     <!-- Navbar Fred -->
   <nav class="navbar fixed-top navbar navbar-expand-md">
   <img class="nv2" src="assets/img/puzzlegalaxie.png"/>
@@ -45,19 +45,37 @@
   </ul>
 </div>
 </nav>
-
 <!-- Navbar Fin -->
-    <div ng-app="appPuzzle" ng-controller="displayContent">
-        <div ng-repeat="puzzle in puzzles">
-          <img src="{{puzzle.image}}" alt="{{puzzle.name}}"/>
-          <div>
-            <h3>{{puzzle.name}}</h3>
-            <p>{{puzzle.desc}}</p>
-            <p>{{puzzle.price}}</p>
-            <!-- boutton ajout panier + qtt -->
-          </div>
-        </div>
+<div>
+<input type="text" ng-model="filterChange" placeholder="Recherche" />
+<ul>
+  <li ng-click="changeCategory('')">All</li>
+  <li ng-click="changeCategory({category : 'enfant'})">Enfant</li>
+<li ng-click="changeCategory({category : 'adulte'})">Adulte</li>
+<li ng-click="changeCategory({category : '3D'})">3D</li>
+</ul>
+<ul>
+  <li ng-click="changeOrder('name')">nom ASC</li>
+  <li ng-click="changeOrder('-name')">nom DESC</li>
+</ul>
+</div>
+<div class="container-fluid">
+<div class="row">
+  <div class="card-group col-lg-4 col-md-6 col-xs-12" ng-repeat="puzzle in puzzles | orderBy : orderby | filter : filterChange  track by $index">
+    <div class="card">
+    <img class="card-img-top" src="{{puzzle.image}}" alt="{{puzzle.name}}" />
+    <div class="card-body">
+      <h3>{{puzzle.name}}</h3>
+      <p>{{puzzle.desc}}</p>
+      <p>{{puzzle.price}}€</p>
     </div>
+      <div class="card-footer">
+      <input type="button" name="addBasket" value="Ajouter au panier" class="btn btn-primary center" ng-click="addBasket($index)" />
+    </div>
+  </div>
+</div>
+</div>
+</div>
     <!-- Footer Fred-->
     <footer class="page-footer">
         <div style="background-image:url(assets/img/puzzle-gray.jpg);">
